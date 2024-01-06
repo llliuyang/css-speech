@@ -9,13 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/path-browserify": "^1.0.2",
+    "path-browserify": "^1.0.1",
     "reveal.js": "^5.0.4",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@types/node": "^20.10.6",
     "@vitejs/plugin-vue": "^4.5.2",
     "sass": "^1.69.7",
+    "unplugin-auto-import": "^0.17.3",
     "vite": "^5.0.8"
   }
 }
