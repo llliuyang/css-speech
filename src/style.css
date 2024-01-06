@@ -55,19 +55,19 @@ a:hover {
 }
 
 body {
+  width: 100vw;
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 #app {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-
-  
 }
 
 @media (prefers-color-scheme: light) {
