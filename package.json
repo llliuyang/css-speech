@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
+    "@types/reveal.js": "^4.4.8",
     "@vitejs/plugin-vue": "^4.5.2",
     "sass": "^1.69.7",
     "unplugin-auto-import": "^0.17.3",
