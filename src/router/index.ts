@@ -9,19 +9,19 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     name: 'view',
     children: [
       {
+        path: 'border-blobk',
+        component: () => import('@/views/border-block/index.vue'),
+        name: 'BorderBlock',
+        meta: {
+          title: 'Border Block'
+        }
+      },
+      {
         path: 'css-tips',
         component: () => import('@/views/css-tips/index.vue'),
         name: 'CssTips',
         meta: {
           title: 'Css Tips'
-        }
-      },
-      {
-        path: 'border-blobk',
-        component: () => import('@/views/border-blobk/index.vue'),
-        name: 'BorderBlock',
-        meta: {
-          title: 'Border Block'
         }
       }
     ]
