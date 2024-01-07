@@ -10,7 +10,7 @@
           class="card"
           v-for="(route, index) in List"
           :style="{ backgroundImage: getImgUrl(index) }"
-          :to="{ path: route.path }">
+          :to="resolvePath(route.path)">
           <p class="title">{{ route.meta?.title }}</p>
         </router-link>
       </div>
@@ -30,10 +30,26 @@ import { RouteRecordRaw } from 'vue-router'
 
 const dot = ref<HTMLElement | null>(null)
 const circle = ref<HTMLElement | null>(null)
+const BasePath = ref('')
 
 const List = computed(() => {
-  return asyncRoutes.filter((item: RouteRecordRaw) => !item.meta?.hidden)
+  let Res: RouteRecordRaw[] = []
+  asyncRoutes.forEach((item) => {
+    if (item.children) {
+      BasePath.value = item.path
+      Res.push(...item.children.filter((child) => !child.meta?.hidden))
+    } else {
+      !item.meta?.hidden && Res.push(item)
+    }
+  })
+  return Res
 })
+
+const resolvePath = (p: string) => {
+  return {
+    path: `${BasePath.value}/${p}`
+  }
+}
 const getImgUrl = (i: number) => `url("//picsum.photos/300?random=${i}")`
 
 const dotX = ref<number>(0)
@@ -105,7 +121,7 @@ requestAnimationFrame(circleAnimation)
   top: 0;
   opacity: 0;
   transform: translate(-50%, -50%);
-  transition: background-color 0.3s linear,opacity 1s linear;
+  transition: background-color 0.3s linear, opacity 1s linear;
   pointer-events: none;
   z-index: 9999;
 }
